@@ -1,0 +1,18 @@
+# SPDX-License-Identifier: Apache-2.0
+
+manifest:
+  self:
+    path: modules/test/testing
+
+  remotes:
+    - name: throwtheswitch
+      url-base: https://github.com/ThrowTheSwitch
+  projects:
+    - name: cmock
+      path: modules/test/cmock
+      revision: f65066f15d8248e6dcb778efb8739904a4512087
+      remote: throwtheswitch
+    - name: unity
+      path: modules/test/cmock/vendor/unity
+      revision: 1958b977019c3ac19bb83350f7b26e60cbeb6c75
+      remote: throwtheswitch
