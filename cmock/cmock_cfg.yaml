@@ -15,8 +15,6 @@
     :when_ptr: :compare_data
     :callback_after_arg_check: true
     :exclude_setjmp_h: true
-    :includes_c_pre_header:
-        - device.h
     :treat_as:
         'int8_t': 'INT8'
         'uint8_t': 'HEX8'
