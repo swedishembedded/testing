@@ -49,7 +49,8 @@ def gen_headers(header, output, output_wrap):
         r"inline\s+static\s+",
         r"__attribute_const__\s+",
         r"__deprecated\s+",
-        r"BUILD_ASSERT\(.*\)",
+        r"__printf_like\(.*\)",
+        r"BUILD_ASSERT\(.*\);",
     ]
     for pattern in patterns:
         pattern = re.compile(pattern)
