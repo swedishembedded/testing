@@ -3,6 +3,7 @@
 # Copyright (c) 2022 Martin Schröder
 
 import argparse
+import os
 import clang.cindex
 from clang.cindex import CursorKind
 
@@ -22,6 +23,8 @@ def dump_functions(in_file, out_file):
         index = clang.cindex.Index.create()
         tu = index.parse(in_file)
         for c in tu.cursor.walk_preorder():
+            if not str(c.location.file).endswith(os.path.basename(in_file)):
+                continue
             if c.kind == CursorKind.FUNCTION_DECL:
                 if c.spelling not in blacklist:
                     f_out.write(c.spelling + "\n")
