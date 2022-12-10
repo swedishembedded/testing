@@ -60,6 +60,12 @@ def gen_headers(header, output, output_wrap):
     pattern = re.compile(r"ifdef CONFIG_USERSPACE\s+", re.M | re.S)
     content = pattern.sub("if 1\n", content)
 
+    pattern = re.compile(r"if.*CONFIG_FLASH_PAGE_LAYOUT.*")
+    content = pattern.sub("if 1\n", content)
+
+    pattern = re.compile(r"if.*CONFIG_FLASH_AREA_CHECK_INTEGRITY.*")
+    content = pattern.sub("if 1\n", content)
+
     with open(output, "w") as output_file:
         output_file.write(content)
 
