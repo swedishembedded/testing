@@ -9,6 +9,10 @@ project. It is primarily used by [Swedish Embedded Platform
 SDK](https://github.com/swedishembedded/sdk) to implement full coverage testing
 support.
 
+[![Training video](https://img.youtube.com/vi/094KENQHDYM/0.jpg)](https://www.youtube.com/watch?v=094KENQHDYM)
+
+Full training is here: https://swedishembedded.com/embedded-firmware-testing/
+
 ## What is full coverage testing?
 
 When you are developing embedded systems, you are often dealing with code that
