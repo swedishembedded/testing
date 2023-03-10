@@ -49,15 +49,22 @@ def gen_headers(header, output, output_wrap):
         r"inline\s+static\s+",
         r"__attribute_const__\s+",
         r"__deprecated\s+",
-        r"BUILD_ASSERT\(.*\)",
+        r"__printf_like\(.*\)",
+        r"BUILD_ASSERT\(.*\);",
     ]
     for pattern in patterns:
         pattern = re.compile(pattern)
         content = pattern.sub(r"", content)
 
     # Treat as always enabled because otherwise futex mocks fail to compile
-    pattern = re.compile(r"ifdef CONFIG_USERSPACE", re.M | re.S)
-    content = pattern.sub(r"if 1", content)
+    pattern = re.compile(r"ifdef CONFIG_USERSPACE\s+", re.M | re.S)
+    content = pattern.sub("if 1\n", content)
+
+    pattern = re.compile(r"if.*CONFIG_FLASH_PAGE_LAYOUT.*")
+    content = pattern.sub("if 1\n", content)
+
+    pattern = re.compile(r"if.*CONFIG_FLASH_AREA_CHECK_INTEGRITY.*")
+    content = pattern.sub("if 1\n", content)
 
     with open(output, "w") as output_file:
         output_file.write(content)
