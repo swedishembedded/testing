@@ -43,6 +43,9 @@ def gen_headers(header, output, output_wrap):
         # Remove attributes that mess up mock generation
         r"__syscall\s+",
         r"FUNC_NORETURN\s+",
+        r"STATS_NAME_START.*",
+        r"STATS_NAME.*",
+        r"STATS_NAME_END.*",
         r"static\s+inline\s+",
         r"static\s+ALWAYS_INLINE\s+",
         r"__STATIC_INLINE\s+",
